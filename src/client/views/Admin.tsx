@@ -5,6 +5,7 @@ import { useParams, useHistory } from "react-router-dom";
 const Admin: React.FC<AdminProps> = (props) => {
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
+  const [tagid, setTagid] = React.useState("");
 
   const { id } = useParams();
   const history = useHistory();
@@ -44,6 +45,7 @@ const Admin: React.FC<AdminProps> = (props) => {
       <form>
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
         <input value={content} onChange={(e) => setContent(e.target.value)} />
+        <input value={tagid} onChange={(e) => setTagid(e.target.value)} />
         <button onClick={handleEdit}> Somebody Save Me! </button>
         <button onClick={handleDelete}> Delete </button>
       </form>

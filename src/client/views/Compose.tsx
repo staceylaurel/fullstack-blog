@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 const Compose: React.FC<ComposeProps> = (props) => {
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
+  const [tagid, setTagid] = React.useState("");
 
   const history = useHistory();
 
@@ -24,7 +25,9 @@ const Compose: React.FC<ComposeProps> = (props) => {
       <form>
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
         <input value={content} onChange={(e) => setContent(e.target.value)} />
+        <input value={tagid} onChange={(e) => setTagid(e.target.value)} />
         <button onClick={handleSubmit}>Submit</button>
+        
       </form>
     </div>
     
