@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { IBlog } from "../utils/types";
 import { Link } from "react-router-dom";
-
+import BlogCard from "../components/BlogCard";
 
 const Home: React.FC<HomeProps> = (props) => {
   const [blogs, setBlogs] = React.useState<IBlog[]>([]);
@@ -14,17 +14,10 @@ const Home: React.FC<HomeProps> = (props) => {
 
   return (
     <main className="container">
-        <section className="row justify-content-center mt-3">
-      {blogs.map((blog) => {
-        return (
-          <div key={blog.id}>
-            <h6 className="text-primary">{blog.title}</h6>
-            <p>{blog.content}</p>
-            
-            <Link to= {`/${blog.id}/blogdetails`} >Go To Details</Link>
-          </div>
-        );
-      })}
+      <section className="row justify-content-center mt-3">
+        {blogs.map((blog) => {
+          return <BlogCard blog={blog} key={blog.id} />;
+        })}
       </section>
     </main>
   );

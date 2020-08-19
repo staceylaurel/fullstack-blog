@@ -3,8 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 
 
 const Admin: React.FC<AdminProps> = (props) => {
-  const [username, setUsername] = React.useState("");
-  const [message, setMessage] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [content, setContent] = React.useState("");
 
   const { id } = useParams();
   const history = useHistory();
@@ -24,7 +24,7 @@ const Admin: React.FC<AdminProps> = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, message }),
+      body: JSON.stringify({ title, content }),
     });
     history.push("/");
   };
@@ -33,8 +33,8 @@ const Admin: React.FC<AdminProps> = (props) => {
     fetch(`/api/blogs/${id}`)
       .then((res) => res.json())
       .then((blog) => {
-        setUsername(blog.username);
-        setMessage(blog.message);
+        setTitle(blog.title);
+        setContent(blog.content);
       });
   }, []);
 
@@ -42,8 +42,8 @@ const Admin: React.FC<AdminProps> = (props) => {
     <>
       <h1>Editing Page</h1>
       <form>
-        <input value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input value={message} onChange={(e) => setMessage(e.target.value)} />
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input value={content} onChange={(e) => setContent(e.target.value)} />
         <button onClick={handleEdit}> Somebody Save Me! </button>
         <button onClick={handleDelete}> Delete </button>
       </form>

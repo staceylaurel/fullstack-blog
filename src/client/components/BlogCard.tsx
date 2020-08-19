@@ -1,15 +1,17 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { IBlog } from "../utils/types";
+import { Link } from "react-router-dom";
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
-    <div className="col-md-7">
-      <div className="card bg-info text-white">
-        <div className="card-header text-danger">{blog.title}</div>
+    <div className="col-md-7 p-3 border bg-light">
+      <div className="card bg-success text-info ">
+        <div className="card-header text-danger badge badge-primary text-wrap">{blog.title}</div>
         <div className="card-body">
-          <p className="card-title trxt-warning">{blog.content}</p>
-          <h6 className="card-footer text-danger">{blog._created}</h6>
+          <p className="card-title text-warning-center">{blog.content}</p>
+          <p className="card-footer text-danger-align-right">{blog._created}</p>
+          <Link to= {`/${blog.id}/blogdetails`} >Go To Details</Link>
         </div>
       </div>
     </div>

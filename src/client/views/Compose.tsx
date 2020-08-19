@@ -8,12 +8,12 @@ const Compose: React.FC<ComposeProps> = (props) => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await fetch("/api/newblog", {
+    await fetch("/api/blogs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title, content }),
+      body: JSON.stringify({ authorid:1, title, content }),
     });
     history.push("/");
   };
@@ -27,9 +27,13 @@ const Compose: React.FC<ComposeProps> = (props) => {
         <button onClick={handleSubmit}>Submit</button>
       </form>
     </div>
+    
   );
+  
 };
 
 interface ComposeProps {}
 
 export default Compose;
+
+
