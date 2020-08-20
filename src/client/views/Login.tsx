@@ -2,7 +2,6 @@ import * as React from "react";
 import { useHistory, Link } from "react-router-dom";
 
 const Login: React.FC<LoginProps> = (props) => {
-  const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -21,7 +20,7 @@ const Login: React.FC<LoginProps> = (props) => {
         <form>
           <div className="form-group">
             <label>Email address</label>
-            <input
+            <input value={email} onChange={(e) => setEmail(e.target.value)}
               type="email"
               className="form-control"
               id="exampleInputEmail1"
@@ -34,14 +33,14 @@ const Login: React.FC<LoginProps> = (props) => {
 
           <div className="form-group">
             <label>Password</label>
-            <input
+            <input value={password} onChange={(e) => setPassword(e.target.value)}
               type="password"
               className="form-control"
               id="exampleInputPassword1"
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button onClick={handleSubmit} type="submit" className="btn btn-primary">
             Submit
           </button>
         </form>
