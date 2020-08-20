@@ -1,7 +1,7 @@
 import {Router} from 'express';
-import login from './login';
-import register from './register';
-import token from './token';
+import loginRouter from './login';
+import registerRouter from './register';
+import tokenRouter from './token';
 
 const router = Router()
 
