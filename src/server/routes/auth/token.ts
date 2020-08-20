@@ -1,12 +1,17 @@
-import { Router } from "./index";
+import { Router } from "express";
+import db from "../../db";
 
-const one = (id: number) => Router(res.json("TEST TOKEN"));
+const router = Router();
 
-const insert = (authorid: number, title: string, content: string) =>
-  Router(res.json("TEST TOKEN"));
+//GET one
+router.get("/", async (req, res) => {
+      res.json("TEST GET");
+  });
 
+//POST
+router.post("/", async (req, res) => {
+    res.json("TEST POST")
+     
+});
 
-export default {
-  one,
-  insert
-};
+export default router;
