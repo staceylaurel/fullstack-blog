@@ -5,6 +5,9 @@ import NavBar from "./components/NavBar";
 import Compose from "./views/Compose";
 import Details from "./views/Details";
 import Admin from "./views/Admin";
+import Login from "./views/Login";
+import Profile from "./views/Profile";
+import Register from "./views/Register";
 
 const App: React.FC<AppProps> = (props) => {
   return (
@@ -22,6 +25,15 @@ const App: React.FC<AppProps> = (props) => {
           </Route>
           <Route exact path="/:id/blogadmin">
           <Admin />
+          </Route>
+          <Route exact path="/login">
+          <Login />
+          </Route>
+          <Route exact path="/profile">
+          <Profile />
+          </Route>
+          <Route exact path="/register">
+          <Register />
           </Route>
       </Switch>
     </BrowserRouter>

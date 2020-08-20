@@ -1,9 +1,10 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
+
 const Compose: React.FC<ComposeProps> = (props) => {
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
-  const [tagid, setTagid] = React.useState("");
+  const [tagid, setTagid] = React.useState(""); 
 
   const history = useHistory();
 
@@ -14,7 +15,7 @@ const Compose: React.FC<ComposeProps> = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ authorid:1, title, content }),
+      body: JSON.stringify({ authorid:1, title, content, tagid }),
     });
     history.push("/");
   };

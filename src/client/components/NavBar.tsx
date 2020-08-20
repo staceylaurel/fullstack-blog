@@ -13,6 +13,21 @@ const NavBar: React.FC<NavBarProps> = (props) => {
         <Link to="/newblog" className="nav-link" data-toggle="tab" href="#newblog">
           Create A New Blog
         </Link>
+        </li>
+        <li className="nav-item">
+        <Link to="/register" className="nav-link" data-toggle="tab" href="#register">
+          Register
+        </Link>
+        </li>
+        <li className="nav-item">
+        <Link to="/profile" className="nav-link" data-toggle="tab" href="#profile">
+          Profile
+        </Link>
+         </li>
+        <li className="nav-item">
+        <Link to="/login" className="nav-link" data-toggle="tab" href="#login">
+          Login
+        </Link>
       </li>
     </ul>
   );
