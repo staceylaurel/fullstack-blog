@@ -10,7 +10,7 @@ const Login: React.FC<LoginProps> = (props) => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    history.push("/");
+    history.push("/profile");
   };
 
   return (

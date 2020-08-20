@@ -12,7 +12,7 @@ const Register: React.FC<RegisterProps> = (props) => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    history.push("/");
+    history.push("/profile");
   };
 
   return (
