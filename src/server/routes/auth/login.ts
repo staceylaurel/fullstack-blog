@@ -4,12 +4,12 @@ import db from "../../db";
 const router = Router();
 
 //GET one
-router.get("/", async (req, res) => {
+router.get("/auth/login", async (req, res) => {
       res.json("TEST GET");
   });
 
 //POST
-router.post("/", async (req, res) => {
+router.post("/auth/login", async (req, res) => {
     res.json("TEST POST")
      
 });
