@@ -8,14 +8,6 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(routes);
 app.get( "*", (req, res) =>{res.sendFile(path.join (__dirname, "../public/index.html"))})
-app.use((err:Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
- res.status(err.status || 500);
- res.json({
-     errors: {
-         err: err.message
-     }
- })
-})
 
 type Error = {
 status?:number;
