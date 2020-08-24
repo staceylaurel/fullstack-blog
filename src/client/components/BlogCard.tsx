@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { IBlog } from "../utils/types";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
@@ -10,7 +11,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <div className="card-header text-danger badge badge-primary text-wrap">{blog.title}</div>
         <div className="card-body">
           <p className="card-title text-warning-center">{blog.content}</p>
-          <p className="card-footer text-danger-align-right">{blog._created}</p>
+          <p className="card-footer text-danger-align-right">{moment().format("MMM Do YY")}</p>
           <Link to= {`/${blog.id}/blogdetails`} >Go To Details</Link>
         </div>
       </div>

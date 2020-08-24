@@ -1,16 +1,14 @@
 import { Router } from "express";
+import { createToken } from "../../utils/tokens";
 import db from "../../db";
+import * as passport from "passport"
 
 const router = Router();
 
-//GET one
-router.get("/", async (req, res) => {
-      res.json("TEST GET");
-  });
-
 //POST
-router.post("/", async (req, res) => {
-    res.json("TEST POST")
+router.post("/", passport.authenticate("local"), async (req: any, res) => {
+    const token = createToken({userid: req.user.id});
+    res.json(token) 
      
 });
 

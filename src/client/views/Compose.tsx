@@ -22,10 +22,10 @@ const Compose: React.FC<ComposeProps> = (props) => {
 
   return (
     <div>
-      <h1>Compose</h1>
-      <form>
+      <h1>Write a New Blog</h1>
+      <form className="form-group border border-primary rounded shadow-lg p-3">
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input value={content} onChange={(e) => setContent(e.target.value)} />
+        <input className="size= 50" value={content} onChange={(e) => setContent(e.target.value)} />
         <input value={tagid} onChange={(e) => setTagid(e.target.value)} />
         <button onClick={handleSubmit}>Submit</button>
         

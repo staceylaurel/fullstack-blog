@@ -1,5 +1,6 @@
 import { Router } from "express";
 import db from "../../db";
+import * as passport from "passport";
 
 const router = Router();
 
@@ -33,12 +34,13 @@ router.get("/:id?", async (req, res) => {
 });
 
 //POST
-router.post("/", async (req, res) => {
+router.post("/", passport.authenticate("jwt"), async (req: any, res) => {
   try {
     const newBlog = req.body;
+    const authorid = req.user.id;
 
     const results = await db.blogs.insert(
-      newBlog.authorid,
+      authorid,
       newBlog.title,
       newBlog.content
     ); //blog
@@ -63,7 +65,7 @@ router.post("/", async (req, res) => {
 });
 
 //PUT body
-router.put("/:id", async (req, res) => {
+router.put("/:id", passport.authenticate("jwt"), async (req: any, res) => {
   //try catch block
   const id = Number(req.params.id);
   const editedBlog = req.body;
@@ -76,7 +78,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //DELETE
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", passport.authenticate("jwt"), async (req: any, res) => {
   //try catch block
   try {
     const id = Number(req.params.id);

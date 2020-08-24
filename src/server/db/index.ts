@@ -2,6 +2,7 @@ import * as mysql from "mysql";
 import blogs from "./blog";
 import blogtags from "./blogtags";
 import config from "../config";
+import authors from "./authors"
 
 const pool = mysql.createPool(config.mysql);
 
@@ -19,5 +20,6 @@ export const Connection = <Connection = any>(
 
 export default {
   blogs,
-  blogtags
+  blogtags, 
+  authors
 };

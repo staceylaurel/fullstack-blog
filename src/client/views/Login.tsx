@@ -16,13 +16,14 @@ const Login: React.FC<LoginProps> = (props) => {
   return (
     <>
       <div>
-        <h1>Login</h1>
-        <form>
-          <div className="form-group">
+        <h1 className="d-flex justify-content-center">Login</h1>
+        <form className="form-group border border-primary rounded shadow-lg p-3" onSubmit={(e) => this.handleLoginSubmit(e)}>
+          <div>
+            
             <label>Email address</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)}
+            <input value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState ({email: e.target.value})}
               type="email"
-              className="form-control"
+              className="form-control p-1 mb-1"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
             />
@@ -33,7 +34,7 @@ const Login: React.FC<LoginProps> = (props) => {
 
           <div className="form-group">
             <label>Password</label>
-            <input value={password} onChange={(e) => setPassword(e.target.value)}
+            <input value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState ({password: e.target.value})}
               type="password"
               className="form-control"
               id="exampleInputPassword1"
@@ -41,7 +42,7 @@ const Login: React.FC<LoginProps> = (props) => {
           </div>
 
           <button onClick={handleSubmit} type="submit" className="btn btn-primary">
-            Submit
+            Login
           </button>
         </form>
       </div>

@@ -13,6 +13,9 @@ const Home: React.FC<HomeProps> = (props) => {
   }, []);
 
   return (
+    <div>
+       <h1 className="d-flex justify-content-center">Welcome to my Blog</h1>
+    
     <main className="container">
       <section className="row justify-content-center mt-3">
         {blogs.map((blog) => {
@@ -20,6 +23,7 @@ const Home: React.FC<HomeProps> = (props) => {
         })}
       </section>
     </main>
+    </div>
   );
 };
 

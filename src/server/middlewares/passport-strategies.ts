@@ -12,7 +12,7 @@ passport.deserializeUser((user, done) => done(null, user));
 passport.use(
   new PassportLocal.Strategy(
     { usernameField: "email" },
-    async (email, passport, done) => {
+    async (email, password, done) => {
       try {
         // so first thing make sure their email even exists in our db, find it!
         const [author] = await db.authors.find("email", email);
@@ -33,24 +33,25 @@ passport.use(
 );
 
 passport.use(
-    new jwtStrategy.Strategy(
-        {
-            // this will find the token on our requests
-            jwtFromRequest: jwtStrategy.ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: config.auth.secret
-        },
-        async (payload: IPayload, done) => {
-            try {
-                const [author] = await db.authors.find('id', payload.userid);
-                if(author) {
-                    delete author.password;
-                } else{
-                    done(null, false);
-                }
-            } catch (error) {
-                console.log(error);
-        done(error);
-            }
+  new jwtStrategy.Strategy(
+    {
+      // this will find the token on our requests
+      jwtFromRequest: jwtStrategy.ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: config.auth.secret,
+    },
+    async (payload: IPayload, done) => {
+      try {
+        const [author] = await db.authors.find("id", payload.userid);
+        if (author) {
+          delete author.password;
+          done(null, author);
+        } else {
+          done(null, false);
         }
-    )
-)
+      } catch (error) {
+        console.log(error);
+        done(error);
+      }
+    }
+  )
+);

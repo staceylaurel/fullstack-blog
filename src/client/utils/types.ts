@@ -1,5 +1,4 @@
 export interface IBlog {
-  tagid: ReactNode;
   id: number;
   title: string;
   content: string;

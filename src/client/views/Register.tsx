@@ -18,8 +18,8 @@ const Register: React.FC<RegisterProps> = (props) => {
   return (
     <>
       <div>
-        <h1>Compose</h1>
-        <form>
+        <h1 className="d-flex justify-content-center p-2">Register</h1>
+        <form className="form-group border border-primary rounded shadow-lg p-3">
           <div className="form-group">
             <label>Name</label>
             <input
@@ -58,7 +58,7 @@ const Register: React.FC<RegisterProps> = (props) => {
         </form>
       </div>
 
-      <Link to="/">Go Back</Link>
+      <Link className="d-inline p-2" to="/">Go Back</Link>
     </>
   );
 };
