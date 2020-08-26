@@ -1,6 +1,7 @@
 import * as React from "react";
-import type { IBlog } from "../utils/types";
+import type { IBlog } from "../utils/Types";
 import { Link } from "react-router-dom";
+import { json } from "../utils/API"
 import BlogCard from "../components/BlogCard";
 
 const Home: React.FC<HomeProps> = (props) => {
@@ -11,6 +12,14 @@ const Home: React.FC<HomeProps> = (props) => {
       .then((res) => res.json())
       .then((blogs) => setBlogs(blogs));
   }, []);
+
+  // async componentDidMount () {
+  //   try {
+  //     let blogs = await json('/api/blogs');
+  //   }catch (e) {
+  //     console.log(e);
+  //   }
+  // }
 
   return (
     <div>

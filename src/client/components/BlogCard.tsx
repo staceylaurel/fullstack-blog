@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { IBlog } from "../utils/types";
+import { IBlog } from "../utils/Types";
 import { Link } from "react-router-dom";
 import moment from "moment";
 

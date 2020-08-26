@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useParams, useHistory } from "react-router-dom";
+import  { json, User } from "../utils/API"
 
 
 const Admin: React.FC<AdminProps> = (props) => {
@@ -39,6 +40,56 @@ const Admin: React.FC<AdminProps> = (props) => {
       });
   }, []);
 
+
+  // private saving: boolean = false;
+
+  // async handleBlogSubmit(e: React.FormEvent<HTMLFormElement>){
+
+  //   e.preventDefault();
+
+  //   if(this.saving) return;
+
+  //   let blog: { authorid: number, title: string, body: string} = {
+  //     authorid: User.userid,
+  //     title: this.state.title,
+  //     body: this.state.body
+  //   };
+
+  //   try{
+  //     this.saving = true;
+  //     let result = await json('./api/blogs', 'POST', blog);
+  //     if(result){
+  //       this.setState({
+  //         title: "",
+  //         body: "",
+  //         saveStatus: "success"
+  //       });
+  //     }else {
+  //       this.setState({ saveStatus: 'error' })
+  //     }
+  //   } catch (e) {
+  //     this.setState({ saveStatus: 'error'});
+  //           throw e;
+  //   } finally {
+  //     this.saving = false;
+  //   }
+
+  // }
+  // componentDidMount() {
+  //   if(User || User.userid === null || User.role !== 'admi'){
+  //     this.this.props.history.replace('/login');
+  //   }
+  // }
+
+  // try{
+  //   
+// if(this.state.saveStatus === 'success'){
+//   this.alert = <div className= "alert alert-success p-1 m-3" role='alert'>Blog Added</div>
+// }else if(this.state.saveStaus === 'error'){
+//   this.alert = <div className= "alert alert-danger p-1 m-3" role='alert'>Error Adding Blog/div>
+
+// }
+
   return (
     <>
       <h1>Editing Page</h1>
@@ -51,8 +102,10 @@ const Admin: React.FC<AdminProps> = (props) => {
       </form>
     </>
   );
+  
 };
 
-interface AdminProps {}
+interface AdminProps {
+}
 
 export default Admin;

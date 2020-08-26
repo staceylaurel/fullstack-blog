@@ -1,5 +1,8 @@
 import * as React from "react";
 import { useHistory, Link } from "react-router-dom";
+import { json, SetAccessToken, User } from '../utils/API';
+import { RouteComponentProps} from "react-router-dom";
+import e from "express";
 
 const Login: React.FC<LoginProps> = (props) => {
   const [email, setEmail] = React.useState("");
@@ -12,6 +15,52 @@ const Login: React.FC<LoginProps> = (props) => {
 
     history.push("/profile");
   };
+
+
+  // componentDidMount() {
+  //   if (User && User.role === 'admin') {
+  //     this.props.history.replace('/admin')
+  //   }
+  // }
+  // private alert: JSX.Element = null;
+  // private logginIn: boolean = false
+
+  // componentDidMount() {
+  //   if(User && User.role === 'admin') {
+  //     this.props.history.push('/admin');
+  //   }
+  // }
+  // async handleLoginSubmit(e: React.FormEment<HTMLFormElement) {
+
+  // e.preventDefault();
+
+  //this.setState({ loginStatus: false});
+  // if(this.logginIn) return;
+  // 
+  // try{
+    // this.logginIn = true;
+  //   let result = await json('/auth/login', 'POST', {
+  //     email: this.state.email, 
+  //     password: this.state.password
+  //   })
+  //   if(result) {
+  //     SetAccessToken(result.token, { userid: result.userid, role: result.role}); 
+  //     if(result.role == 'admin'){
+  //       this.props.history.push('/admin');
+  //   } else {
+  //     this.props.history('/');
+  //   }
+  //   }else {
+  //  this.setState({ loginStatus: true });
+  //   }
+  //   } catch(e) {
+    // this.setState({ loginStatus: true });
+  //     throw e;
+  //   }
+  // } finally {
+    // this.logginIn = false;
+  // }
+  // }
 
   return (
     <>

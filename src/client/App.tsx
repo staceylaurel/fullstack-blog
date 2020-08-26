@@ -8,6 +8,8 @@ import Admin from "./views/Admin";
 import Login from "./views/Login";
 import Profile from "./views/Profile";
 import Register from "./views/Register";
+import PrivateRoute from "./components/PrivateRoute";
+
 
 const App: React.FC<AppProps> = (props) => {
   return (
@@ -17,21 +19,21 @@ const App: React.FC<AppProps> = (props) => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/newblog">
+        <PrivateRoute exact path="/newblog">
         <Compose />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/:id/blogdetails">
           <Details />
           </Route>
-          <Route exact path="/:id/blogadmin">
+          <PrivateRoute exact path="/:id/blogadmin">
           <Admin />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/login">
           <Login />
           </Route>
-          <Route exact path="/profile">
+          <PrivateRoute exact path="/profile">
           <Profile />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/register">
           <Register />
           </Route>
