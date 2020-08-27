@@ -1,18 +1,12 @@
 import { Router } from "express";
-import db from "../../db";
+import * as passport from "passport";
 
 const router = Router();
 
 //GET one
-router.get("/", async (req, res) => {
-      res.json("TEST GET");
+router.get("/verify", passport.authenticate('jwt'), async (req, res) => {
+      res.sendStatus(200);
   });
-
-//POST
-router.post("/", async (req, res) => {
-    res.json("TEST POST")
-     
-});
 
 export default router;
 

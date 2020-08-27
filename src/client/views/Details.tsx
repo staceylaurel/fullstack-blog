@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useParams, Link } from "react-router-dom";
 import type { IBlog } from "../utils/types";
-import { json } from "../utils/API";
+import api from "../utils/api-service";
 
 const Details: React.FC<DetailsProps> = (props) => {
   const { id } = useParams();
@@ -9,28 +9,12 @@ const Details: React.FC<DetailsProps> = (props) => {
   const [tags, setTags] = React.useState<{name:string}[]>([]);
 
   React.useEffect(() => {
-    fetch(`/api/blogs/${id}`)
-      .then((res) => res.json())
-      .then((blog) => setblog(blog));
+    api(`/api/blogs/${id}`).then((blog) => setblog(blog));
   }, []);
 
   React.useEffect(() => {
-    fetch(`/api/blogtags/${id}`)
-      .then((res) => res.json())
-      .then((tags) => setTags(tags));
+    api(`/api/blogtags/${id}`).then((tags) => setTags(tags));
   }, []);
-
-  // async componentDidMount() {
-  //   let id = this.PaymentResponse.match.params.id;
-  //   try {
-  //     let blog = await json(`api/blogs/${id}`);
-  //     let tags = await json(`api/blogtags/${id}`);
-  //     this.setState({ blog, tags});
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
-
 
   return (
     <div className="row m-3 d-inline-flex margin: auto p-2 bd-highlight col-sm-6 18rem">

@@ -8,7 +8,7 @@ const pool = mysql.createPool(config.mysql);
 
 export const Connection = <Connection = any>(
   mysql: string,
-  values?: Array<string | number>
+  values?: any
 ) => {
   return new Promise<Connection>((resolve, reject) => {
     pool.query(mysql, values, (err, results) => {

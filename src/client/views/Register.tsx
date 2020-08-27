@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import api from "../utils/api-service";
 
 const Register: React.FC<RegisterProps> = (props) => {
   const [name, setName] = React.useState("");
@@ -11,7 +12,8 @@ const Register: React.FC<RegisterProps> = (props) => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
+    const token = await api("/auth/register", "POST", {name, email, password});
+    localStorage.seItem('token', token);
     history.push("/profile");
   };
 

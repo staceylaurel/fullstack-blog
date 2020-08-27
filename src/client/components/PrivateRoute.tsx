@@ -10,7 +10,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, ...rest}) => {
     if(!token) {
       setChecking(false);
     }else {
-      fetch('/auth/tokne/verify', {
+      fetch('/auth/token/verify', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -32,7 +32,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, ...rest}) => {
 if (loggedIn) {
   return <Route {...rest}>{children}</Route>
 } else {
-  return <Redirect to="/login" />
+  return <Redirect to={{ pathname: '/login', state: { msg: 'You must be logged in to view this page.' }  }} />
 }
 };
 

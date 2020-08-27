@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
-import API from "../utils/API";
+import api from "../utils/api-service";
 
 const Compose: React.FC<ComposeProps> = (props) => {
   const [title, setTitle] = React.useState("");
@@ -11,34 +11,11 @@ const Compose: React.FC<ComposeProps> = (props) => {
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    await fetch("/api/blogs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({ authorid: 1, title, content, tagid }),
-    });
+    await api("/api/blogs", "POST", {authorid: 1, title, content})
     history.push("/");
   };
 
-  React.useEffect(() => {
-    API('/api/blogs', 'POST', {title, content})
-    .then(result => console.log(result.insert.id))
-    // const token = localStorage.getItem("token");
-    // fetch("/api/compose", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    //   body: JSON.stringify({}),
-    // }).then((res) => res.json())
-    // .then(backFromServer => console.log(backFromServer.insertid))
-  }, []);
-
-  return (
+    return (
     <div>
       <h1>Write a New Blog</h1>
       <form className="form-group border border-primary rounded shadow-lg p-3">
