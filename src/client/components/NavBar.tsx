@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { logout } from "../utils/api-";
+import { logout } from "../utils/api-service";
 
 const NavBar: React.FC<NavBarProps> = (props) => {
   return (

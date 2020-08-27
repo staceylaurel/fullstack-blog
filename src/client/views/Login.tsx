@@ -22,7 +22,7 @@ const Login: React.FC<LoginProps> = (props) => {
     <>
       <div>
         <h1 className="d-flex justify-content-center">Login</h1>
-        <form className="form-group border border-primary rounded shadow-lg p-3" onSubmit={(e) => this.handleLoginSubmit(e)}>
+        <form className="form-group border border-primary rounded shadow-lg p-3">
           <div>
             
             <label>Email address</label>
@@ -51,11 +51,11 @@ const Login: React.FC<LoginProps> = (props) => {
           </button>
         </form>
       </div>
-</>
+
       <Link to="/">Go Back</Link>
 
-      // {state?.msg && <div className="" {}}
-    
+      {/* // {state?.msg && <div className="" {}} */}
+    </>
   );
 };
 

@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Route, Redirect } from "react-router-dom";
+import api from "../utils/api-service";
+
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, ...rest}) => {
   const [checking, setChecking] = React.useState<boolean>(true);
@@ -10,7 +12,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, ...rest}) => {
     if(!token) {
       setChecking(false);
     }else {
-      fetch('/auth/token/verify', {
+      api('/auth/token/verify', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
