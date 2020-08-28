@@ -5,14 +5,14 @@ import api from "../utils/api-service";
 
 const Register: React.FC<RegisterProps> = (props) => {
   const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [amount, setAmount] = React.useState("");
+
 
   const history = useHistory();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const token = await api("/auth/register", "POST", {name, email, password});
+    const token = await api("/api/register", "POST", {name, amount});
     localStorage.setItem('token', token);
     history.push("/profile");
   };
@@ -20,7 +20,7 @@ const Register: React.FC<RegisterProps> = (props) => {
   return (
     <>
       <div>
-        <h1 className="d-flex justify-content-center p-2">Register</h1>
+        <h1 className="d-flex justify-content-center p-2">Register Donation</h1>
         <form className="form-group border border-primary rounded shadow-lg p-3">
           <div className="form-group">
             <label>Name</label>
@@ -32,28 +32,19 @@ const Register: React.FC<RegisterProps> = (props) => {
             />
           </div>
           <div className="form-group">
-            <label>Email address</label>
+            <label>Donation Amount</label>
             <input
-              value={email} onChange={(e) => setEmail(e.target.value)}
-              type="email"
+              value={amount} onChange={(e) => setAmount(e.target.value)}
+              type="amount"
               className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              id="exampleInputAmount1"
+              aria-describedby="AmountHelp"
             />
-            <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
+            <small id="AmountHelp" className="form-text text-muted">
+              We'll never share your amount with anyone else.
             </small>
           </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              value={password} onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-            />
-          </div>
-
+         
           <button onClick={handleSubmit} type="submit" className="btn btn-primary">
             Submit
           </button>

@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import api from "../utils/api-service";
 
-const Register: React.FC<RegisterProps> = (props) => {
+const Contact: React.FC<ContactProps> = (props) => {
   const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [subject, setSubject] = React.useState("");
+  const [message, setMessage] = React.useState("");
 
   const history = useHistory();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const token = await api("/auth/register", "POST", {name, email, password});
+    const token = await api("/api/contact", "POST", {name, subject, message});
     localStorage.setItem('token', token);
     history.push("/profile");
   };
@@ -20,7 +20,7 @@ const Register: React.FC<RegisterProps> = (props) => {
   return (
     <>
       <div>
-        <h1 className="d-flex justify-content-center p-2">Register</h1>
+        <h1 className="d-flex justify-content-center p-2">Contact</h1>
         <form className="form-group border border-primary rounded shadow-lg p-3">
           <div className="form-group">
             <label>Name</label>
@@ -32,25 +32,26 @@ const Register: React.FC<RegisterProps> = (props) => {
             />
           </div>
           <div className="form-group">
-            <label>Email address</label>
+            <label>Subject</label>
             <input
-              value={email} onChange={(e) => setEmail(e.target.value)}
-              type="email"
+              value={subject} onChange={(e) => setSubject(e.target.value)}
+              type="subject"
               className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              id="exampleInputsubject1"
+              aria-describedby="subjectHelp"
             />
-            <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
+            <small id="subjectHelp" className="form-text text-muted">
+              What's the subject about?
             </small>
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label>Message</label>
+            <textarea className="form-control" id="exampleTextarea"></textarea>
             <input
-              value={password} onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
+              value={message} onChange={(e) => setMessage(e.target.value)}
+              type="message"
+              className="form-control-file"
+              id="messageHelp"
             />
           </div>
 
@@ -65,6 +66,6 @@ const Register: React.FC<RegisterProps> = (props) => {
   );
 };
 
-interface RegisterProps {}
+interface ContactProps {}
 
-export default Register;
+export default Contact;

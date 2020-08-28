@@ -9,6 +9,8 @@ import Login from "./views/Login";
 import Profile from "./views/Profile";
 import Register from "./views/Register";
 import PrivateRoute from "./components/PrivateRoute";
+import Donate from "./views/Donate";
+import Contact from "./views/Contact";
 
 
 const App: React.FC<AppProps> = (props) => {
@@ -36,6 +38,12 @@ const App: React.FC<AppProps> = (props) => {
           </PrivateRoute>
           <Route exact path="/register">
           <Register />
+          </Route>
+          <Route exact path="/donate">
+          <Donate />
+          <Route exact path="/contact">
+          <Contact />
+          </Route>
           </Route>
       </Switch>
     </BrowserRouter>

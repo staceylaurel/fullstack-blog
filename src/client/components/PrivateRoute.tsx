@@ -12,7 +12,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, ...rest}) => {
     if(!token) {
       setChecking(false);
     }else {
-      api('/auth/token/verify', {
+      fetch('/auth/token/verify', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

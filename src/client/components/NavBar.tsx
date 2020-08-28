@@ -11,25 +11,44 @@ const NavBar: React.FC<NavBarProps> = (props) => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link to="/newblog" className="nav-link" data-toggle="tab" href="#newblog">
+        <Link
+          to="/newblog"
+          className="nav-link"
+          data-toggle="tab"
+          href="#newblog"
+        >
           Create A New Blog
         </Link>
-        </li>
-        <li className="nav-item">
-        <Link to="/register" className="nav-link" data-toggle="tab" href="#register">
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/register"
+          className="nav-link"
+          data-toggle="tab"
+          href="#register"
+        >
           Register
         </Link>
-        </li>
-        <li className="nav-item">
-        <Link to="/profile" className="nav-link" data-toggle="tab" href="#profile">
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/profile"
+          className="nav-link"
+          data-toggle="tab"
+          href="#profile"
+        >
           Profile
         </Link>
-         </li>
-        <li className="nav-item">
+      </li>
+      <li className="nav-item">
         <Link to="/login" className="nav-link" data-toggle="tab" href="#login">
           Login
         </Link>
-        <button className="btn btn-danger " onClick={logout}>Logout</button>
+      </li>
+      <li className="nav-item ml-auto">
+        <button className="btn btn-outline-danger " onClick={logout}>
+          Logout
+        </button>
       </li>
     </ul>
   );
