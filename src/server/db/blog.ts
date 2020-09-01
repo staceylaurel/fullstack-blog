@@ -19,3 +19,5 @@ export default {
   insert,
   update
 };
+
+//[id] is an escape parameter which prevents users/hackers from direct access to ? id in mysql

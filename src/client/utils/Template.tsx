@@ -2,14 +2,16 @@ import * as React from "react";
 
 const Template: React.FC<TemplateProps> = (props) => {
   return (
-    <>
-      <h1>Template</h1>
-    </>
+    <main className="container">
+      <section className="row">
+        <div className="col-12">
+          <h1 className="display-1 text-center">Template</h1>
+        </div>
+      </section>
+    </main>
   );
 };
 
-interface TemplateProps{
-
-}
+interface TemplateProps {}
 
 export default Template;

@@ -12,7 +12,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import Donate from "./views/Donate";
 import Contact from "./views/Contact";
 
-
 const App: React.FC<AppProps> = (props) => {
   return (
     <BrowserRouter>
@@ -22,29 +21,29 @@ const App: React.FC<AppProps> = (props) => {
           <Home />
         </Route>
         <PrivateRoute exact path="/newblog">
-        <Compose />
+          <Compose />
         </PrivateRoute>
         <Route exact path="/:id/blogdetails">
           <Details />
-          </Route>
-          <PrivateRoute exact path="/:id/blogadmin">
+        </Route>
+        <PrivateRoute exact path="/:id/blogadmin">
           <Admin />
-          </PrivateRoute>
-          <Route exact path="/login">
+        </PrivateRoute>
+        <Route exact path="/login">
           <Login />
-          </Route>
-          <PrivateRoute exact path="/profile">
+        </Route>
+        <PrivateRoute exact path="/profile">
           <Profile />
-          </PrivateRoute>
-          <Route exact path="/register">
+        </PrivateRoute>
+        <Route exact path="/register">
           <Register />
-          </Route>
-          <Route exact path="/donate">
+        </Route>
+        <Route exact path="/donate">
           <Donate />
-          <Route exact path="/contact">
+        </Route>
+        <Route exact path="/contact">
           <Contact />
-          </Route>
-          </Route>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

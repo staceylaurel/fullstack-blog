@@ -6,42 +6,27 @@ const NavBar: React.FC<NavBarProps> = (props) => {
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link to="/" className="nav-link active" data-toggle="tab" href="#home">
+        <Link to="/" className="nav-link active">
           Blog Home
         </Link>
       </li>
       <li className="nav-item">
-        <Link
-          to="/newblog"
-          className="nav-link"
-          data-toggle="tab"
-          href="#newblog"
-        >
+        <Link to="/newblog" className="nav-link">
           Create A New Blog
         </Link>
       </li>
       <li className="nav-item">
-        <Link
-          to="/register"
-          className="nav-link"
-          data-toggle="tab"
-          href="#register"
-        >
+        <Link to="/register" className="nav-link">
           Register
         </Link>
       </li>
       <li className="nav-item">
-        <Link
-          to="/profile"
-          className="nav-link"
-          data-toggle="tab"
-          href="#profile"
-        >
+        <Link to="/profile" className="nav-link">
           Profile
         </Link>
       </li>
       <li className="nav-item">
-        <Link to="/login" className="nav-link" data-toggle="tab" href="#login">
+        <Link to="/login" className="nav-link">
           Login
         </Link>
       </li>

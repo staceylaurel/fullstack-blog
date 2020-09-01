@@ -1,5 +1,5 @@
-import { Router } from "express";
 import * as passport from "passport";
+import { Router } from "express";
 
 const router = Router();
 
@@ -9,4 +9,3 @@ router.get("/verify", passport.authenticate('jwt'), async (req, res) => {
   });
 
 export default router;
-

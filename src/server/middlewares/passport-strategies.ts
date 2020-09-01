@@ -14,7 +14,7 @@ passport.use(
     { usernameField: "email" },
     async (email, password, done) => {
       try {
-        // so first thing make sure their email even exists in our db, find it!
+        // first thing make sure their email even exists in our db, find it!
         const [author] = await db.authors.find("email", email);
         // then we make sure they are real and that their password they're tring to login with matches what we store in our database
         if (author && comparePasswords(password, author.password)) {

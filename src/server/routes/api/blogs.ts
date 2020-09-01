@@ -33,7 +33,9 @@ router.get("/:id?", async (req, res) => {
   }
 });
 
-//POST
+//POST api/blogs
+//Request Body { title: string, content: string } 
+//const authorid replaces "authorid: string" in Request Body
 router.post("/", passport.authenticate("jwt"), async (req: any, res) => {
   try {
     const newBlog = req.body;
@@ -64,9 +66,9 @@ router.post("/", passport.authenticate("jwt"), async (req: any, res) => {
   }
 });
 
-//PUT body
+//PUT /api/blogs/id
+//Request Body { title: string, content: string }
 router.put("/:id", passport.authenticate("jwt"), async (req: any, res) => {
-  //try catch block
   const id = Number(req.params.id);
   const editedBlog = req.body;
   const results = await db.blogs.update(
