@@ -26,6 +26,11 @@ const NavBar: React.FC<NavBarProps> = (props) => {
         </Link>
       </li>
       <li className="nav-item">
+        <Link to="/donate" className="nav-link">
+          Save the Clocktower!
+        </Link>
+      </li>
+      <li className="nav-item">
         <Link to="/login" className="nav-link">
           Login
         </Link>

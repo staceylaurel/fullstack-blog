@@ -3,29 +3,37 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import api from "../utils/api-service";
 
-const Register: React.FC<RegisterProps> = (props) => {
+//component on the DOM
+import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
+
+const Donate: React.FC<DonateProps> = (props) => {
   const [name, setName] = React.useState("");
   const [amount, setAmount] = React.useState("");
 
-
   const history = useHistory();
+  const stripe = useStripe();
+  const elements = useElements();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const token = await api("/api/register", "POST", {name, amount});
-    localStorage.setItem('token', token);
-    history.push("/profile");
+    const cardElement = elements.getElement(CardElement);
+    const result = await stripe.createToken(cardElement, {name});
+    console.log(result);
+    console.log(result.token.id);
+    const resultCharge = await api('/api/donate', 'POST', { token: result.token.id, amount});
+    console.log(resultCharge);
   };
 
   return (
     <>
       <div>
-        <h1 className="d-flex justify-content-center p-2">Register Donation</h1>
+        <h1 className="d-flex justify-content-center p-2">Donate today and SAVE the Clocktower!</h1>
         <form className="form-group border border-primary rounded shadow-lg p-3">
           <div className="form-group">
             <label>Name</label>
             <input
-              value={name} onChange={(e) => setName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               type="name"
               className="form-control"
               id="exampleInputname1"
@@ -34,7 +42,8 @@ const Register: React.FC<RegisterProps> = (props) => {
           <div className="form-group">
             <label>Donation Amount</label>
             <input
-              value={amount} onChange={(e) => setAmount(e.target.value)}
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
               type="amount"
               className="form-control"
               id="exampleInputAmount1"
@@ -44,18 +53,24 @@ const Register: React.FC<RegisterProps> = (props) => {
               We'll never share your amount with anyone else.
             </small>
           </div>
-         
-          <button onClick={handleSubmit} type="submit" className="btn btn-primary">
+          <CardElement className= 'form-control' />
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="btn btn-primary"
+          >
             Submit
           </button>
         </form>
       </div>
 
-      <Link className="d-inline p-2" to="/">Go Back</Link>
+      <Link className="d-inline p-2" to="/">
+        Go Back
+      </Link>
     </>
   );
 };
 
-interface RegisterProps {}
+interface DonateProps {}
 
-export default Register;
+export default Donate;

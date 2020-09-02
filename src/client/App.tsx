@@ -1,5 +1,11 @@
+//@ts-nocheck
+//library imports
 import * as React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+//component imports
 import Home from "./views/Home";
 import NavBar from "./components/NavBar";
 import Compose from "./views/Compose";
@@ -11,6 +17,8 @@ import Register from "./views/Register";
 import PrivateRoute from "./components/PrivateRoute";
 import Donate from "./views/Donate";
 import Contact from "./views/Contact";
+
+const stripePromise = loadStripe('pk_test_51HL9apCUvjLs6MHfkGfE8BDDEyh6VSfeLKfIowtW4NEV1OvT78rSv2gTS1x5eTvNBl5oQMYZPamjDiBYAaNkwa5q00k238Q5hC')
 
 const App: React.FC<AppProps> = (props) => {
   return (
@@ -39,7 +47,9 @@ const App: React.FC<AppProps> = (props) => {
           <Register />
         </Route>
         <Route exact path="/donate">
+          <Elements stripe={stripePromise}>
           <Donate />
+          </Elements>
         </Route>
         <Route exact path="/contact">
           <Contact />

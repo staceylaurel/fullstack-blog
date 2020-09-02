@@ -6,7 +6,7 @@ export default async <T = any>(
 ) => {
   const token = localStorage.getItem("token");
 
-  const headers = {
+  const headers: { [key: string]: string} = {
     "Content-Type": "application/json",
   };
 
