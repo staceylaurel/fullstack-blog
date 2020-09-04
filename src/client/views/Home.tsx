@@ -1,7 +1,7 @@
 import * as React from "react";
 import api from "../utils/api-service";
 import BlogCard from "../components/BlogCard";
-import type { IBlog } from "../utils/Types";
+import type { IBlog } from "../utils/types";
 
 //fetches arrays from server side
 const Home: React.FC<HomeProps> = (props) => {

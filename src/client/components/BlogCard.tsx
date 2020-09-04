@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IBlog } from "../utils/Types";
+import { IBlog } from "../utils/types";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
